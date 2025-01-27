@@ -73,7 +73,7 @@ export default function SearchResults() {
                           <Heart className="w-5 h-5" />
                         </Button>
                       </div>
-                      <div className="w-full flex items-center justify-between gap-4 mt-4 absolute bottom-2 right-0 p-2">
+                      <div className="w-full flex items-center justify-between gap-4 mt-4 md:absolute bottom-2 right-0 p-2">
                         <div className="flex items-center gap-1">
                           <Star className="w-4 h-4 text-yellow-400 fill-current" />
                           <span className="text-sm">4.8</span>

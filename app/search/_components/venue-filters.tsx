@@ -55,7 +55,7 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
               {["INDOOR", "OUTDOOR", "HYBRID"].map((setting) => (
                 <Button
                   key={setting}
-                  variant={filters.setting === setting ? "default" :setting==="INDOOR"? "default" : "outline"}
+                  variant={filters.setting === setting ? "default" :setting==="INDOOR"&& filters.setting===null? "default" : "outline"}
                   size="sm"
                   onClick={() => updateFilter("setting", setting as VenueFilter["setting"])}
                 >
@@ -143,14 +143,14 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
             <h4 className="text-sm font-medium mb-2">Adjustable Space</h4>
             <div className="flex gap-2">
               <Button
-                variant={filters.adjustableSpace ? "secondary" : "outline"}
+                variant={filters.adjustableSpace ? "default" : "outline"}
                 size="sm"
                 onClick={() => updateFilter("adjustableSpace", true)}
               >
                 YES
               </Button>
               <Button
-                variant={!filters.adjustableSpace ? "secondary" : "outline"}
+                variant={!filters.adjustableSpace ? "default" : "outline"}
                 size="sm"
                 onClick={() => updateFilter("adjustableSpace", false)}
               >
