@@ -1,0 +1,1 @@
+export const DefaultCardPlaceHolderImage = "/default-card-placeholder.png";
