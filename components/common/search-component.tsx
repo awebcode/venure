@@ -13,11 +13,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search } from "lucide-react";
+import { useRouter } from "next/navigation";
 interface SearchComponentProps {
   showFiltersButtons?: boolean;
 }
 export function SearchComponent({ showFiltersButtons }: SearchComponentProps) {
   const [date, setDate] = useState<Date | undefined>(undefined);
+  const router = useRouter();
 
   return (
     <div className="max-w-[1177px]">
@@ -81,6 +83,9 @@ export function SearchComponent({ showFiltersButtons }: SearchComponentProps) {
 
         {/* Search Button */}
         <Button
+          onClick={() => {
+            router.push("/search");
+          }}
           size="icon"
           className="w-full md:w-10  bg-primaryOrange hover:bg-primaryOrange/90 text-white"
         >
