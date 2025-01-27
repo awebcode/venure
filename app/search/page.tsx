@@ -7,7 +7,7 @@ import { VenueFilters } from "./_components/venue-filters";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Heart, Star } from "lucide-react";
+import { Heart, MapPin, Star } from "lucide-react";
 import { DefaultCardPlaceHolderImage } from "@/constants/data";
 import { VenueResultsPagination } from "./_components/venue-results-pagination";
 import { SearchComponent } from "@/components/common/search-component";
@@ -67,6 +67,9 @@ export default function SearchResults() {
                         <div>
                           <h3 className="text-xl font-semibold mb-1">Grand Ballroom</h3>
                           <p className="text-muted-foreground">Shangri-La, Bangkok</p>
+                          <p className="text-muted-foreground flex items-center">
+                          <MapPin className="w-4 h-4 mr-2" />  Bangkok, Thailand
+                          </p>{" "}
                           <p className="text-sm text-muted-foreground">Hotel</p>
                         </div>
                         <Button variant="ghost" size="icon">
