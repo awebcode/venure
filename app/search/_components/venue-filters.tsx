@@ -47,7 +47,7 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="font-semibold mb-4">Filter By:</h3>
+        <h3 className="font-semibold text-sm md:text-xl mb-4">Filter By:</h3>
         <div className="space-y-4">
           <div>
             <h4 className="text-sm font-medium mb-2">Setting</h4>
@@ -55,7 +55,7 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
               {["INDOOR", "OUTDOOR", "HYBRID"].map((setting) => (
                 <Button
                   key={setting}
-                  variant={filters.setting === setting ? "default" : "outline"}
+                  variant={filters.setting === setting ? "default" :setting==="INDOOR"? "default" : "outline"}
                   size="sm"
                   onClick={() => updateFilter("setting", setting as VenueFilter["setting"])}
                 >

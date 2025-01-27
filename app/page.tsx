@@ -1,5 +1,4 @@
 import { Categories } from "@/components/common/categories";
-import { Navbar } from "@/components/common/navbar";
 import { SearchComponent } from "@/components/common/search-component";
 import { Newsletter } from "@/components/common/news-letter";
 import { Footer } from "@/components/common/footer";
@@ -32,19 +31,21 @@ const venues = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Hero Section */}
-      <section className="relative bg-evenure-blue text-white px-4 py-12 md:py-24">
+      <section className="relative bg-primaryBlue text-primaryBlue-foreground text-foreground px-4 md:rounded-bl-[120px] md:rounded-br-[120px] ">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold">Book your Venue</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primaryBlue-foreground">
+              Book your Venue
+            </h2>
             <p className="text-lg opacity-90">
               Search for venues to host your best events
             </p>
           </div>
 
-          <SearchComponent />
+          <SearchComponent showFiltersButtons={true} />
         </div>
       </section>
 

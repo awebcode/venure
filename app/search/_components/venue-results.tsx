@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
@@ -35,29 +35,30 @@ export function VenueResults({ venues, isLoading }: VenueResultsProps) {
                   <div>
                     <h3 className="text-xl font-semibold mb-1">{venue.name}</h3>
                     <p className="text-muted-foreground">{venue.location}</p>
+                    <p className="text-muted-foreground">Bangkok, Thailand</p>
                     <p className="text-sm text-muted-foreground">{venue.type}</p>
                   </div>
                   <Button variant="ghost" size="icon">
                     <Heart className="w-5 h-5" />
                   </Button>
                 </div>
-                <div className="flex items-center gap-4 mt-4">
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-sm">{venue.rating}</span>
-                    <span className="text-sm text-muted-foreground">
-                      ({venue.reviews.toLocaleString()} Reviews)
-                    </span>
-                  </div>
-                  <div className="text-sm">
-                    <span className="font-semibold">
-                      THB {venue.price.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
           </CardContent>
+          <CardFooter>
+            <div className="flex items-center gap-4 mt-4">
+              <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <span className="text-sm">{venue.rating}</span>
+                <span className="text-sm text-muted-foreground">
+                  ({venue.reviews.toLocaleString()} Reviews)
+                </span>
+              </div>
+              <div className="text-sm">
+                <span className="font-semibold">THB {venue.price.toLocaleString()}</span>
+              </div>
+            </div>
+          </CardFooter>
         </Card>
       ))}
       {/* Pagination */}

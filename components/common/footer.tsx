@@ -1,13 +1,10 @@
 import {
   Facebook,
   Twitter,
-  Instagram,
-  Youtube,
-  PinIcon as Pinterest,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+import {FaInstagram, FaPinterest,FaYoutube} from "react-icons/fa"
 const footerLinks = {
   support: {
     title: "Support",
@@ -70,9 +67,9 @@ const footerLinks = {
 const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "Youtube" },
-  { icon: Pinterest, href: "#", label: "Pinterest" },
+  { icon: FaInstagram, href: "#", label: "Instagram" },
+  { icon: FaYoutube, href: "#", label: "Youtube" },
+  { icon: FaPinterest, href: "#", label: "Pinterest" },
 ];
 
 export function Footer() {
@@ -124,10 +121,10 @@ export function Footer() {
               <Link
                 key={social.label}
                 href={social.href}
-                className="bg-black hover:bg-gray-700 text-white hover:text-gray-200 p-[6px] rounded-full transition-all duration-300"
+                className="bg-black hover:bg-gray-700 text-white hover:text-gray-200 p-2 rounded-full transition-all duration-300"
                 aria-label={social.label}
               >
-                <Icon className="h-8 w-8" />
+                <Icon fill="#fff" strokeWidth={0} className="h-8 w-8" />
               </Link>
             );
           })}

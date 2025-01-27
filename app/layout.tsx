@@ -7,6 +7,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { generateSEO, generateViewport } from "@/config/seo/seo";
 import "./globals.css";
+import { Navbar } from "@/components/common/navbar";
 
 const inter = Inter({
   weight: ["400", "500", "700", "900"],
@@ -31,7 +32,10 @@ export default async function RootLayout({
       >
         <div className="flex-grow ">
           {/* <SessionProvider session={session}> */}
-          <ReactQueryProvider>{children}</ReactQueryProvider>
+          <ReactQueryProvider>
+            <Navbar />
+            {children}
+          </ReactQueryProvider>
           {/* </SessionProvider> */}
         </div>
         <Toaster />
