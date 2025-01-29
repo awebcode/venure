@@ -48,10 +48,10 @@ export function SearchResultsHeader({
         <div className="w-full sm:w-auto">
           <Tabs defaultValue="listings" onValueChange={onTabChange}>
             <TabsList className="flex w-full sm:w-auto">
-              <TabsTrigger value="listings" className="flex-1 sm:flex-none">
+              <TabsTrigger value="listings" className="flex-1 sm:flex-none w-fit">
                 Listings
               </TabsTrigger>
-              <TabsTrigger value="packages" className="flex-1 sm:flex-none">
+              <TabsTrigger value="packages" className="flex-1 sm:flex-none w-fit">
                 Packages
               </TabsTrigger>
             </TabsList>

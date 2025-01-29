@@ -84,7 +84,7 @@ export function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:inline-flex text-sm font-medium text-gray-600"
+                className="inline-flex text-sm font-medium text-gray-200"
               >
                 <Bell className="h-5 w-5" />
               </Button>

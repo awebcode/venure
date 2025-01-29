@@ -73,3 +73,33 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* globals.css */
+@layer utilities {
+  .btn-primary-orange {
+    @apply bg-primaryOrange hover:!bg-primaryOrange/90 text-primaryOrange-foreground rounded-lg transition-all duration-300;
+  }
+}
+
+
+/* Swiper Navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-white bg-black/50 w-12 h-12 rounded-full shadow-lg transition-all duration-300 hover:bg-black/70 ring-2 ring-gray-300 hover:ring-gray-500 !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  @apply text-lg font-bold !important;
+}
+.swiper-pagination-bullets{
+  @apply absolute bottom-[0px] left-1/2 -translate-x-1/2 !important;
+}
+/* Swiper Pagination */
+.swiper-pagination-bullet {
+  @apply   h-3 w-3 bg-gray-400 border border-white opacity-70 transition-all duration-300 hover:opacity-100 ring-2 ring-gray-300 hover:ring-gray-500 !important;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-black opacity-100 scale-110 ring-2 ring-black !important;
+}

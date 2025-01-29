@@ -6,6 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Star } from "lucide-react";
 import type { VenueFilter } from "@/types/search";
+import { Card } from "@/components/ui/card";
 
 interface VenueFiltersProps {
   onFilterChange: (filters: VenueFilter) => void;
@@ -22,13 +23,27 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
     adjustableSpace: true,
   });
 
-  const features = ["Projector", "Pool", "Stage", "Sound System", "Catering", "Parking"];
+  const features = [
+    "Projector",
+    "Pool",
+    "Stage",
+    "Sound System",
+    "Catering",
+    "Parking",
+    "WiFi",
+    "Lighting",
+  ];
+
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
 
   useEffect(() => {
     onFilterChange(filters);
   }, [filters, onFilterChange]);
 
-  const updateFilter = (key: keyof VenueFilter, value: VenueFilter[keyof VenueFilter]) => {
+  const updateFilter = (
+    key: keyof VenueFilter,
+    value: VenueFilter[keyof VenueFilter]
+  ) => {
     setFilters((prev) => ({
       ...prev,
       [key]: value,
@@ -46,18 +61,25 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
 
   return (
     <div className="space-y-6">
-      <div>
+      <Card className="p-2">
         <h3 className="font-semibold text-sm md:text-xl mb-4">Filter By:</h3>
         <div className="space-y-4">
           <div>
-            <h4 className="text-sm font-medium mb-2">Setting</h4>
+            <h4 className="text-sm text-gray-600 font-medium mb-2">Setting</h4>
             <div className="flex flex-wrap gap-2">
               {["INDOOR", "OUTDOOR", "HYBRID"].map((setting) => (
                 <Button
                   key={setting}
-                  variant={filters.setting === setting ? "default" :setting==="INDOOR"&& filters.setting===null? "default" : "outline"}
-                  size="sm"
-                  onClick={() => updateFilter("setting", setting as VenueFilter["setting"])}
+                  variant={
+                    filters.setting === setting
+                      ? "default"
+                      : setting === "INDOOR" && filters.setting === null
+                      ? "default"
+                      : "outline"
+                  }
+                  onClick={() =>
+                    updateFilter("setting", setting as VenueFilter["setting"])
+                  }
                 >
                   {setting}
                 </Button>
@@ -66,7 +88,7 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-2">Number of Attendees</h4>
+            <h4 className="text-sm text-gray-600 font-medium mb-2">Number of Attendees</h4>
             <Slider
               value={[filters.attendees]}
               onValueChange={([value]) => updateFilter("attendees", value)}
@@ -80,7 +102,7 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-2">Space Size</h4>
+            <h4 className="text-sm text-gray-600 font-medium mb-2">Space Size</h4>
             <Slider
               value={[filters.spaceSize]}
               onValueChange={([value]) => updateFilter("spaceSize", value)}
@@ -94,9 +116,9 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-2">Features</h4>
+            <h4 className="text-sm text-gray-600 font-medium mb-2">Features</h4>
             <div className="space-y-2">
-              {features.slice(0, 3).map((feature) => (
+              {(showAllFeatures ? features : features.slice(0, 3)).map((feature) => (
                 <label key={feature} className="flex items-center space-x-2">
                   <Checkbox
                     checked={filters.features.includes(feature)}
@@ -106,13 +128,17 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
                 </label>
               ))}
             </div>
-            <Button variant="link" className="text-sm p-0 h-auto mt-2">
-              SHOW MORE
+            <Button
+              variant="link"
+              className="text-sm p-0 h-auto mt-2"
+              onClick={() => setShowAllFeatures(!showAllFeatures)}
+            >
+              {showAllFeatures ? "SHOW LESS" : "SHOW MORE"}
             </Button>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-2">Price Range</h4>
+            <h4 className="text-sm text-gray-600 font-medium mb-2">Price Range</h4>
             <Slider
               value={[filters.priceRange]}
               onValueChange={([value]) => updateFilter("priceRange", value)}
@@ -125,34 +151,39 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
             </div>
           </div>
 
+          {/* Rating */}
           <div>
-            <h4 className="text-sm font-medium mb-2">Rating</h4>
-            <div className="flex items-center gap-1">
-              {[1, 2, 3, 4, 5].map((rating) => (
-                <Star
-                  key={rating}
-                  className="w-4 h-4 cursor-pointer"
-                  fill={rating <= filters.rating ? "#facc15" : "none"}
-                  onClick={() => updateFilter("rating", rating)}
-                />
-              ))}
+            <div className="flex justify-between items-center my-2">
+              <h4 className="text-sm text-gray-600 font-medium mb-2">Rating</h4>
+              <Button variant="outline" className="flex items-center gap-x-2">
+                <Star className="w-4 h-4" />
+                <span className="text-muted-foreground ">{filters.rating} - 5</span>
+              </Button>
             </div>
+            <Slider
+              value={[filters.rating]}
+              onValueChange={([value]) => updateFilter("rating", value)}
+              max={5}
+              step={0.1}
+              className="w-full"
+            />
+          
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-2">Adjustable Space</h4>
+            <h4 className="text-sm text-gray-600 font-medium mb-2">Adjustable Space</h4>
             <div className="flex gap-2">
               <Button
                 variant={filters.adjustableSpace ? "default" : "outline"}
-                size="sm"
                 onClick={() => updateFilter("adjustableSpace", true)}
+                className="w-full"
               >
                 YES
               </Button>
               <Button
                 variant={!filters.adjustableSpace ? "default" : "outline"}
-                size="sm"
                 onClick={() => updateFilter("adjustableSpace", false)}
+                className="w-full"
               >
                 NO
               </Button>
@@ -163,7 +194,7 @@ export function VenueFilters({ onFilterChange }: VenueFiltersProps) {
             FILTER
           </Button>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

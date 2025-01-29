@@ -114,7 +114,7 @@ export function Footer() {
             ))}
         </div>
 
-        <div className="mt-12 flex justify-end space-x-6">
+        <div className="mt-12 flex flex-wrap md:flex-nowrap justify-end space-x-6">
           {socialLinks.map((social) => {
             const Icon = social.icon;
             return (

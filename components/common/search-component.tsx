@@ -22,7 +22,7 @@ export function SearchComponent({ showFiltersButtons }: SearchComponentProps) {
   const router = useRouter();
 
   return (
-    <div className="max-w-[1177px]">
+    <div className="w-full max-w-[1177px]">
       {/* Button Group */}
       {showFiltersButtons && (
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-4">
