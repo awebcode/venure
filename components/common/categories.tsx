@@ -47,11 +47,11 @@ export function Categories() {
             return (
               <Button
                 key={index}
-                variant="outline"
+                variant="ghost"
                 className="flex flex-col items-center p-4 h-auto"
               >
-                <Icon className="w-6 h-6 mb-2 text-evenure-blue" />
-                <span className="text-sm">{category.label}</span>
+                <Icon className="w-6 h-6 mb-2 text-gray-800" />
+                <span className="text-sm text-muted-foreground" >{category.label}</span>
               </Button>
             );
           })}
