@@ -6,20 +6,36 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Button } from "./ui/button";
-import { CommonCard } from "./common/common-card";
-import type { VenueCardProps } from "@/types/search";
+import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const RecommendedVenues = ({ venues }: { venues: VenueCardProps[] }) => {
+interface SliderSectionProps {
+  title: string;
+  subtitle?: string;
+  items: any[];
+  renderItem: (item: any, index: number) => React.ReactNode;
+  viewMoreText?: string;
+}
+
+const SliderSection: React.FC<SliderSectionProps> = ({
+  title,
+  subtitle,
+  items,
+  renderItem,
+  viewMoreText = "VIEW MORE",
+}) => {
   const isMobile = useIsMobile();
 
   return (
     <section className="py-8 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl font-bold">Recommended Venues</h3>
-          <Button className="btn-primary-orange">VIEW MORE</Button>
+          <div>
+            <h3 className="text-2xl font-bold">{title}</h3>
+            {subtitle && <p className="text-gray-500">{subtitle}</p>}
+          </div>
+          <Button className="btn-primary-orange">{viewMoreText}</Button>
         </div>
 
         {/* Swiper Slider */}
@@ -31,9 +47,9 @@ const RecommendedVenues = ({ venues }: { venues: VenueCardProps[] }) => {
           pagination={{ clickable: true }}
           className="py-6"
         >
-          {venues.map((venue, index) => (
+          {items.map((item, index) => (
             <SwiperSlide key={index} className="flex justify-center">
-              <CommonCard {...venue} />
+              {renderItem(item, index)}
             </SwiperSlide>
           ))}
         </Swiper>
@@ -42,4 +58,4 @@ const RecommendedVenues = ({ venues }: { venues: VenueCardProps[] }) => {
   );
 };
 
-export default RecommendedVenues;
+export default SliderSection;

@@ -14,18 +14,13 @@ import SpaceSelector from "./_components/SpaceSelector";
 import { Footer } from "@/components/common/footer";
 import { NavigationTabs } from "./_components/NavigationTabs";
 import { SearchComponent } from "@/components/common/search-component";
+import { Navbar } from "@/components/common/navbar";
 
 function App() {
   return (
     <>
       {" "}
-      <section className="relative w-screen min-h-[45px] flex items-center justify-center bg-primaryBlue text-primaryBlue-foreground text-foreground px-4 rounded-bl-[60px] rounded-br-[60px]">
-        {/* Search Component Positioned Half Outside */}
-        {/* The background color of the section could be adjusted if needed */}
-        <div className="md:absolute flex justify-center items-center mx-auto transform top-[15%] left-0 right-0">
-          <SearchComponent showFiltersButtons={false} />
-        </div>
-      </section>
+     <Navbar navbarClasses="md:mb-6"  searchComponentWrapperClasses="w-full max-w-[90%]"/>
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Header */}

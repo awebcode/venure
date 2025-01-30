@@ -33,7 +33,7 @@ export default async function RootLayout({
         <div className="flex-grow ">
           {/* <SessionProvider session={session}> */}
           <ReactQueryProvider>
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
           </ReactQueryProvider>
           {/* </SessionProvider> */}

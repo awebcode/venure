@@ -9,7 +9,7 @@ interface CommonCardProps {
 
 export function CommonCard({ title, subtitle, imageUrl }: CommonCardProps) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden w-full">
       <div className="aspect-video relative">
         <Image
           src={imageUrl || "/placeholder.svg"}

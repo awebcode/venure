@@ -16,18 +16,13 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Footer } from "@/components/common/footer";
 import { Newsletter } from "@/components/common/news-letter";
 import { Badge } from "@/components/ui/badge";
+import { Navbar } from "@/components/common/navbar";
 
 export default function SearchResults() {
   return (
     <>
       {" "}
-      <section className="relative w-screen min-h-[45px] flex items-center justify-center bg-primaryBlue text-primaryBlue-foreground text-foreground px-4 rounded-bl-[60px] rounded-br-[60px]">
-        {/* Search Component Positioned Half Outside */}
-        {/* The background color of the section could be adjusted if needed */}
-        <div className="md:absolute flex justify-center items-center mx-auto transform top-[15%] left-0 right-0">
-          <SearchComponent showFiltersButtons={false} />
-        </div>
-      </section>
+     <Navbar navbarClasses="" searchComponentWrapperClasses="w-full max-w-[90%] "/>
       <div className="container mx-auto p-4 lg:p-8">
         <div className="mb-8 ">
           <SearchHeader resultCount={1280} searchTerm="Venue" />
